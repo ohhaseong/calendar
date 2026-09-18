@@ -19,51 +19,51 @@
     background:var(--bg); color:var(--fg);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
     margin:0 auto; padding:20px 14px; max-width:480px;
-    font-size:16px;
+    font-size:18px;
   }
+  .yearRow input{
+    width:100%; box-sizing:border-box; padding:12px; font-size:1.1rem;
+    border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--fg);
+  }
+  .navBtn{
+    flex:0 0 auto; width:46px; height:46px; border-radius:8px;
+    border:1px solid var(--line); background:var(--bg); color:var(--fg);
+    font-size:1.3rem; cursor:pointer;
+  }
+  select{
+    flex:1; padding:12px; font-size:1.1rem;
+    border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--fg);
+  }
+  h1{font-size:1.3rem; text-align:center; margin:0 0 18px 0; color:var(--accent);}
+  th,td{ text-align:center; padding:12px 0; font-size:1.15rem; }
+  .g{ display:block; font-size:0.72rem; color:var(--sub); margin-top:4px; }
   @media (min-width:700px){
     body{
-      max-width:720px; padding:40px 24px; font-size:20px;
+      max-width:720px; padding:40px 24px; font-size:22px;
     }
-    h1{ font-size:1.6rem !important; margin-bottom:24px !important; }
-    .yearRow input, select{ font-size:1.2rem; padding:14px; }
-    .navBtn{ width:52px; height:52px; font-size:1.4rem; }
-    th,td{ font-size:1.2rem; padding:16px 0; }
-    .g{ font-size:0.8rem; }
+    h1{ font-size:1.8rem !important; margin-bottom:24px !important; }
+    .yearRow input, select{ font-size:1.3rem; padding:14px; }
+    .navBtn{ width:56px; height:56px; font-size:1.5rem; }
+    th,td{ font-size:1.4rem; padding:18px 0; }
+    .g{ font-size:0.9rem; }
     .specialGrid .day{ width:220px; padding:24px 16px; }
-    .specialGrid .wd, .specialGrid .nameLabel{ font-size:1.2rem; }
-    .specialGrid .dateLabel{ font-size:0.9rem; }
+    .specialGrid .wd, .specialGrid .nameLabel{ font-size:1.3rem; }
+    .specialGrid .dateLabel{ font-size:1rem; }
   }
   .yearRow{
     margin-bottom:12px;
   }
-  .yearRow input{
-    width:100%; box-sizing:border-box; padding:10px; font-size:1rem;
-    border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--fg);
-  }
   .monthRow{
     display:flex; gap:8px; justify-content:center; align-items:center; margin-bottom:14px;
-  }
-  .navBtn{
-    flex:0 0 auto; width:40px; height:40px; border-radius:8px;
-    border:1px solid var(--line); background:var(--bg); color:var(--fg);
-    font-size:1.1rem; cursor:pointer;
   }
   .monthRow select{
     flex:0 1 160px;
   }
-  select{
-    flex:1; padding:10px; font-size:1rem;
-    border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--fg);
-  }
-  h1{font-size:1.05rem; text-align:center; margin:0 0 16px 0; color:var(--accent);}
   table{
     width:100%; border-collapse:collapse; table-layout:fixed;
   }
-  th,td{ text-align:center; padding:8px 0; font-size:0.9rem; }
   th{ color:var(--sub); font-weight:500; }
   td.day{ border-radius:8px; vertical-align:top; padding-top:8px; padding-bottom:6px; }
-  .g{ display:block; font-size:0.62rem; color:var(--sub); margin-top:3px; }
   td.today{ background:var(--accent); color:#fff; font-weight:700; }
   td.today .g{ color:#fff; opacity:0.85; }
   .specialGrid{
