@@ -42,7 +42,7 @@
   }
   body{
     background:var(--bg); color:var(--fg);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans KR",sans-serif;
     font-size:var(--fs-base);
     margin:0 auto; max-width:480px;
     padding:calc(var(--sp-5) + env(safe-area-inset-top)) calc(var(--sp-4) + env(safe-area-inset-right))
@@ -57,7 +57,7 @@
     font-size:var(--fs-base); padding:var(--sp-3);
     border:1px solid var(--line); border-radius:var(--radius);
     background:var(--bg); color:var(--fg);
-    -webkit-appearance:none; appearance:none;
+    -webkit-appearance:none; -moz-appearance:none; appearance:none;
   }
   .yearRow{ margin-bottom:var(--sp-3); }
   .yearRow input{ width:100%; }
@@ -139,11 +139,12 @@ const title = document.getElementById('title');
 const thisYear = new Date().getFullYear();
 yearSel.value = thisYear;
 
-// 오늘 날짜에 해당하는 13개월력 달을 기본 선택
+// 오늘 날짜에 해당하는 13개월력 달을 기본 선택 (DST 경계에도 안전하도록 UTC 기준 날짜 차이 계산)
 (function setDefaultMonth(){
-  const base0 = new Date(thisYear,0,1);
-  const today0 = new Date(); today0.setHours(0,0,0,0);
-  const doy = Math.round((today0 - base0) / 86400000) + 1;
+  const today = new Date();
+  const baseUTC = Date.UTC(thisYear, 0, 1);
+  const todayUTC = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+  const doy = Math.round((todayUTC - baseUTC) / 86400000) + 1;
   if(doy > 364){
     monthSel.value = 'special';
   } else {
