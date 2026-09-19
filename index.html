@@ -9,6 +9,17 @@
 <style>
   :root{
     --bg:#ffffff; --fg:#1a1a1a; --sub:#666; --line:#ddd; --accent:#2b6cb0;
+
+    /* 스페이싱 스케일: 4px 기준, 8px 그리드 */
+    --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px; --sp-6:24px;
+
+    /* 타입 스케일: 1rem 기준 1.25배(Major Third) */
+    --fs-xs:0.64rem;   /* 보조 텍스트(양력 날짜) */
+    --fs-base:1rem;    /* 본문(요일 헤더, 날짜 숫자) */
+    --fs-md:1.25rem;   /* 강조(화살표 버튼) */
+    --fs-lg:1.563rem;  /* 제목 */
+
+    --radius:8px;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
@@ -24,86 +35,74 @@
     box-sizing:border-box;
   }
   html{
-    font-size:clamp(17px, 4.6vw, 22px);
+    font-size:clamp(16px, 4.5vw, 20px);
   }
   @media (min-width:700px){
-    html{ font-size:clamp(20px, 2.2vw, 28px); }
+    html{ font-size:clamp(18px, 2vw, 24px); }
   }
   body{
     background:var(--bg); color:var(--fg);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:var(--fs-base);
     margin:0 auto; max-width:480px;
-    padding:calc(20px + env(safe-area-inset-top)) calc(14px + env(safe-area-inset-right))
-            calc(20px + env(safe-area-inset-bottom)) calc(14px + env(safe-area-inset-left));
+    padding:calc(var(--sp-5) + env(safe-area-inset-top)) calc(var(--sp-4) + env(safe-area-inset-right))
+            calc(var(--sp-5) + env(safe-area-inset-bottom)) calc(var(--sp-4) + env(safe-area-inset-left));
   }
-  .yearRow input{
-    width:100%; box-sizing:border-box; padding:12px; font-size:1.1rem;
-    border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--fg);
-    -webkit-appearance:none; appearance:none;
-  }
-  .navBtn{
-    flex:0 0 auto; width:46px; height:46px; border-radius:8px;
-    border:1px solid var(--line); background:var(--bg); color:var(--fg);
-    font-size:1.3rem; cursor:pointer;
-  }
-  select{
-    flex:1; padding:12px; font-size:1.1rem;
-    border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--fg);
-    -webkit-appearance:none; appearance:none;
-  }
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button{
-    opacity:1;
-  }
-  h1{font-size:1.3rem; text-align:center; margin:0 0 18px 0; color:var(--accent);}
-  th,td{ text-align:center; padding:12px 0; font-size:1.15rem; }
-  .g{ display:block; font-size:0.6rem; color:var(--sub); margin-top:4px; }
   @media (min-width:700px){
-    body{
-      max-width:720px; padding:40px 24px;
-    }
-    .specialGrid .day{ width:220px; padding:24px 16px; }
+    body{ max-width:720px; padding:var(--sp-6); }
+    .specialGrid .day{ width:220px; }
   }
-  .yearRow{
-    margin-bottom:12px;
+
+  input, select{
+    font-size:var(--fs-base); padding:var(--sp-3);
+    border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--bg); color:var(--fg);
+    -webkit-appearance:none; appearance:none;
   }
+  .yearRow{ margin-bottom:var(--sp-3); }
+  .yearRow input{ width:100%; }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button{ opacity:1; }
+
   .monthRow{
-    display:flex; gap:8px; justify-content:center; align-items:center; margin-bottom:14px;
+    display:flex; gap:var(--sp-2); justify-content:center; align-items:center;
+    margin-bottom:var(--sp-4);
   }
-  .monthRow select{
-    flex:0 1 160px;
+  .monthRow select{ flex:0 1 160px; }
+  .navBtn{
+    flex:0 0 auto; width:44px; height:44px; border-radius:var(--radius);
+    border:1px solid var(--line); background:var(--bg); color:var(--fg);
+    font-size:var(--fs-md); cursor:pointer;
   }
-  table{
-    width:100%; border-collapse:collapse; table-layout:fixed;
+
+  h1{
+    font-size:var(--fs-lg); text-align:center; margin:0 0 var(--sp-5) 0; color:var(--accent);
   }
+
+  table{ width:100%; border-collapse:collapse; table-layout:fixed; }
+  th,td{ text-align:center; padding:var(--sp-3) 0; font-size:var(--fs-base); }
   th{ color:var(--sub); font-weight:500; }
-  td.day{ border-radius:8px; vertical-align:top; padding-top:8px; padding-bottom:6px; }
+  td.day{ border-radius:var(--radius); vertical-align:top; }
   td.today{ background:var(--accent); color:#fff; font-weight:700; }
+  .g{ display:block; font-size:var(--fs-xs); color:var(--sub); margin-top:var(--sp-1); }
   td.today .g{ color:#fff; opacity:0.85; }
+
   .specialGrid{
-    display:flex; flex-direction:row; gap:14px; justify-content:center; margin-top:8px;
+    display:flex; flex-direction:row; gap:var(--sp-4); justify-content:center; margin-top:var(--sp-2);
   }
   .specialGrid .day{
-    width:120px; height:auto; padding:14px 8px;
-    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
-    border-radius:8px;
+    width:120px; height:auto; padding:var(--sp-5) var(--sp-3);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    border-radius:var(--radius);
   }
   .specialGrid .wd{
-    font-size:0.9rem; color:var(--sub); font-weight:500;
+    font-size:var(--fs-base); color:var(--sub); font-weight:500; margin-bottom:var(--sp-5);
   }
-  .specialGrid .nameLabel{
-    font-size:0.9rem; font-weight:400;
-  }
-  .specialGrid .dateLabel{
-    font-size:0.62rem; color:var(--sub);
-  }
-  .specialGrid .day.today{
-    background:var(--accent); color:#fff;
-  }
+  .specialGrid .nameLabel{ font-size:var(--fs-base); font-weight:400; }
+  .specialGrid .dateLabel{ font-size:var(--fs-xs); color:var(--sub); margin-top:var(--sp-1); }
+  .specialGrid .day.today{ background:var(--accent); color:#fff; }
   .specialGrid .today .wd,
-  .specialGrid .today .dateLabel{
-    color:#fff; opacity:0.9;
-  }
+  .specialGrid .today .dateLabel{ color:#fff; opacity:0.9; }
 </style>
 </head>
 <body>
